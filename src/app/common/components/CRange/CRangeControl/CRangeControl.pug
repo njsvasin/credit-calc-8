@@ -1,0 +1,8 @@
+c-range-line([offset]="offset", [isMaximum]="isMaximum", (offsetChange)="setValueByOffset($event)")
+
+c-range-slider([rangeValue]="rangeValue", [offset]="offset", [style.left.px]="offset",
+  (move)="setValueByOffset($event)", [maxOffset]="maxOffset", [value]="currentValue",
+  [linePadding]="linePadding")
+
+c-range-scale([rangeValue]="rangeValue", [minValue]="minValue", [maxValue]="maxValue",
+  [fixedValues]="fixedValues", [stepPx]="stepPx", (scaleValueChange)="setValue($event)")

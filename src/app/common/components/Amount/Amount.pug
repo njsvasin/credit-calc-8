@@ -1,0 +1,11 @@
+span(*ngIf="isShowSign()") {{ data.sign }}
+
+span {{ data.whole }}
+
+ng-container( *ngIf="isShowDecimal()")
+  span {{ data.delimiter }}
+  span.amount__decimals {{ data.decimal }}
+
+ng-container(*ngIf="currency")
+  span &nbsp;
+  span.amount__sign {{ currency.symbol }}

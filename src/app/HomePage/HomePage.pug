@@ -1,0 +1,44 @@
+.form
+  c-range([control]="amountControl", [minValue]="100000", [maxValue]="30000000", text="Сумма")
+    amount(*cRangeValue="let value", [value]="value")
+    c-input-currency(*cRangeInput, [control]="amountControl")
+
+  c-range([control]="interestControl", [minValue]="7", [maxValue]="30", [step]=0.1, text="%")
+    input.form__input(*cRangeInput, [formControl]="interestControl", [cInput]="interestParsers")
+
+  c-range([control]="termControl", [minValue]="1", [maxValue]="30", [step]=1, text="Срок (лет)")
+    input.form__input(*cRangeInput, [formControl]="termControl", [cInput]="termParsers")
+
+.output-results
+  .output-results__item(*ngIf="monthlyPayment")
+    span.output-results__label Ежемесячный платёж:
+    span.output-results__value.output-results__value_bold {{ monthlyPayment | number:'1.0-0' }}
+
+  .output-results__item(*ngIf="allInterestsPayments")
+    span.output-results__label Переплата:
+    span.output-results__value {{ allInterestsPayments | number:'1.0-0' }}
+
+  .output-results__item(*ngIf="totalAmount")
+    span.output-results__label Итоговая сумма выплат:
+    span.output-results__value {{ totalAmount | number:'1.0-0' }}
+
+.output-results__show-schedule
+  c-checkbox(text="Показать график платежей", [checked]="showSchedule", (change)="toggleSchedule()")
+
+table.payments(*ngIf="showSchedule")
+  thead
+    tr
+      th
+      th.payments__cell Проценты
+      th.payments__cell Основной долг
+
+  tbody
+    tr(*ngFor="let payment of payments; let i = index")
+      td {{ i + 1 }}
+      td.payments__cell {{ payment.interestRepayment | number:'1.0-0'}}
+      td.payments__cell {{ payment.principalRepayment | number:'1.0-0'}}
+
+.copyright
+  | © {{year}} created by
+  |
+  a.copyright__author(href="https://vk.com/njsvasin", rel="nofollow", target="_blank") Sergei Vasin

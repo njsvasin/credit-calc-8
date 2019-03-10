@@ -1,0 +1,32 @@
+@import '../../../../styl/variables.styl'
+@import '../../CRangeVariables'
+
+$padding = 15px
+
+.c-range-slider
+  position absolute
+  top 50%
+  transform translate(-50%, -50%)
+  padding $padding
+  background-color rgba($color-blue, .17)
+  border-radius 50%
+  cursor pointer
+
+  &__current-value
+    display none
+    position absolute
+    top 3px
+    transform translate(-50%, -100%) translateX($padding)
+    font-size 16px
+    white-space nowrap
+
+  &__circle
+    position absolute
+    top 50%
+    transform translate(-50%, -50%) rotate(-45deg)
+    display block
+    width $c-range-circle-diameter
+    height $c-range-circle-diameter
+    box-sizing border-box
+    border-radius $indent-0
+    background-color $color-blue

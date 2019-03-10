@@ -1,0 +1,8 @@
+.c-range__input(*ngIf="inputContent")
+  .c-range__label {{text}}
+  ng-container(*ngTemplateOutlet="inputContent.templateRef")
+
+.c-range__control
+  c-range-control([minValue]="minValue", [maxValue]="maxValue", [step]="step",
+    [fixedValues]="fixedValues", [controlValue]="control.value", (valueChange)="setValue($event)",
+    [rangeValue]="rangeValue")

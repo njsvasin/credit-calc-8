@@ -1,0 +1,7 @@
+.c-range-slider__current-value(#currentValue, [ngSwitch]="!!rangeValue")
+  ng-container(*ngSwitchCase="true")
+    ng-container(*ngTemplateOutlet="rangeValue.templateRef; context: {$implicit: value}")
+
+  ng-container(*ngSwitchDefault) {{value}}
+
+.c-range-slider__circle

@@ -1,0 +1,17 @@
+@import '../common/styl/variables.styl'
+
+.form
+  display flex
+  flex-direction column
+  padding-top $indent-3
+
+  &__input
+    width 100%
+    padding $indent-3 $indent-3
+    box-sizing border-box
+    border 1px solid $color-blue
+    border-radius $indent-0 $indent-0 $indent-0 0
+
+    &:hover
+    &:focus
+      outline-color $color-blue

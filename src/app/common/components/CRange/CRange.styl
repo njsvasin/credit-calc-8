@@ -1,0 +1,20 @@
+@import '../../styl/variables.styl'
+
+.c-range
+  position relative
+  margin-bottom $indent-5
+
+  &__control
+    user-select none
+
+  &__input
+    position relative
+
+  &__label
+    position absolute
+    top 50%
+    right $indent-3
+    z-index $z-index--under
+    transform translateY(-50%)
+    color $color-grey-dark
+    font-size 1.1em

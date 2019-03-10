@@ -1,0 +1,8 @@
+.c-range-scale__scale-item(*ngFor="let item of values", [style.left.px]="item.left",
+  (click)="onClick(item.value)")
+
+  ng-container([ngSwitch]="!!rangeValue")
+    ng-container(*ngSwitchCase="true")
+      ng-container(*ngTemplateOutlet="rangeValue.templateRef; context: {$implicit: item.value}")
+
+    ng-container(*ngSwitchDefault) {{item.value}}
