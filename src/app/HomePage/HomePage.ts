@@ -9,7 +9,6 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { RcParsers } from '../common/components/controls/RcParsers';
 import { Currency } from '../common/currency/Currency';
 
-
 @Component({
   selector: 'home-page',
   providers: [
