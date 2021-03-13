@@ -35,9 +35,6 @@ export class RcParsers {
    * @param countRemoved количество убранных символов ДО prevSelectionEnd после работы парсера
    */
   static getResult(newValue: string, prevSelectionEnd: number, countRemoved = 0) {
-    console.log('newValue', newValue);
-    console.log('prevSelectionEnd', prevSelectionEnd);
-    console.log('countRemoved', countRemoved);
     return {
       selection: prevSelectionEnd - countRemoved,
       value: newValue
