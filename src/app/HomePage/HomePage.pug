@@ -6,7 +6,7 @@
   c-range([control]="interestControl", [minValue]="5", [maxValue]="30", [step]=0.1, text="%")
     input.form__input(*cRangeInput, [formControl]="interestControl", [cInput]="interestParsers")
 
-  c-range([control]="termControl", [minValue]="1", [maxValue]="30", [step]=1, text="Срок (лет)")
+  c-range([control]="termControl", [minValue]="1", [maxValue]="360", [step]=1, text="Срок (месяцев)")
     input.form__input(*cRangeInput, [formControl]="termControl", [cInput]="termParsers")
 
 .output-results
@@ -21,6 +21,11 @@
   .output-results__item(*ngIf="totalAmount")
     span.output-results__label Итоговая сумма выплат:
     span.output-results__value {{ totalAmount | number:'1.0-0' }}
+
+  .output-results__item.output-results__item--credit-card(*ngIf="allInterestsPayments")
+    span.output-results__label Переплата по кредитке за данный срок:
+    span.output-results__value {{ creditCardAnnualOverpayment | number:'1.0-0' }}
+
 
 .output-results__show-schedule
   c-checkbox(text="Показать график платежей", [checked]="showSchedule", (change)="toggleSchedule()")

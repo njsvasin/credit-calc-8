@@ -27,6 +27,8 @@ export class HomePage implements OnInit, OnDestroy {
   allInterestsPayments: string;
   totalAmount: string;
 
+  creditCardAnnualOverpayment: string;
+
   payments: Payment[];
 
   public showSchedule = false;
@@ -35,7 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
   public interestControl = new FormControl();
   public termControl = new FormControl();
   public interestParsers = [RcParsers.decimal(), RcParsers.maxLength(5)];
-  public termParsers = [RcParsers.number(), RcParsers.maxLength(2)];
+  public termParsers = [RcParsers.number(), RcParsers.maxLength(23)];
 
   private destroy = new EventEmitter();
 
@@ -102,7 +104,7 @@ export class HomePage implements OnInit, OnDestroy {
     const amount = parseFloat(this.amount);
     const annualInterest = parseFloat(this.interest) / 100;
     const i = annualInterest / 12;
-    const n = parseFloat(this.term) * 12;
+    const n = parseFloat(this.term);
 
     // const annuityRatio = i / (1 - Math.pow(1 + i, -(n-1)) );
     const annuityRatio = i * Math.pow((1 + i), n) / (Math.pow(1 + i, n) - 1);
@@ -114,11 +116,14 @@ export class HomePage implements OnInit, OnDestroy {
       this.allInterestsPayments = String(monthlyPayment * n - amount);
       this.totalAmount = String(monthlyPayment * n);
 
+      this.creditCardAnnualOverpayment = String(amount * i * n);
+
       this.payments = this.paymentsService.calcPayments(amount, annualInterest, monthlyPayment, n);
     } else {
       this.monthlyPayment = null;
       this.allInterestsPayments = null;
       this.totalAmount = null;
+      this.creditCardAnnualOverpayment = null;
     }
   }
 }
